@@ -27,8 +27,8 @@ authorize_net:
 
 # Working credentials, no need to replace
 awesomesauce:
-  some_credential: SOMECREDENTIAL
-  another_credential: ANOTHERCREDENTIAL
+  login: anthony-api
+  password: 0e3e95b3dea2c272a3898ecfd01b33151af3d4765b7bd32b35a6dd80ecacacd3687a9d28c9f658ff
 
 axcessms:
   channel: channel
