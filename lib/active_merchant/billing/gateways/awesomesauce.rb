@@ -2,7 +2,7 @@ module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     class AwesomesauceGateway < Gateway
       self.test_url = 'http://sandbox.asgateway.com/api/'
-      self.live_url = 'https://example.com/live'
+      self.live_url = 'https://prod.awesomesauce.example.com/api/'
 
       self.supported_countries = ['US']
       self.default_currency = 'USD'
