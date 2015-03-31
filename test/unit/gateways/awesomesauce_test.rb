@@ -3,8 +3,8 @@ require 'test_helper'
 class AwesomesauceTest < Test::Unit::TestCase
   def setup
     @gateway = AwesomesauceGateway.new(
-      some_credential: 'login',
-      another_credential: 'password'
+      login: 'login',
+      password: 'password'
     )
 
     @credit_card = credit_card
