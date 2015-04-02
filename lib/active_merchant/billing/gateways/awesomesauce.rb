@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     class AwesomesauceGateway < Gateway
@@ -25,7 +27,12 @@ module ActiveMerchant #:nodoc:
         add_address(post, payment, options)
         add_customer_data(post, options)
 
-        commit('sale', post)
+        request = build_xml_request('auth') do |doc|
+          add_invoice(doc, money, options)
+        end
+        puts request
+
+        commit('purch', post)
       end
 
       def authorize(money, payment, options={})
@@ -98,6 +105,14 @@ module ActiveMerchant #:nodoc:
           authorization: authorization_from(response),
           test: test?
         )
+      end
+
+      def build_xml_request(root)
+        builder = Nokogiri::XML::Builder.new
+        builder.__send__(root) do |doc|
+          yield(doc)            
+        end
+        builder.to_xml
       end
 
       def success_from(response)
