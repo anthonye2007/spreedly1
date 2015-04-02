@@ -87,6 +87,8 @@ module ActiveMerchant #:nodoc:
 
       def commit(action, parameters)
         url = (test? ? test_url : live_url)
+        puts 'Action: ' + action
+        puts parameters
         response = parse(ssl_post(url, post_data(action, parameters)))
 
         Response.new(
