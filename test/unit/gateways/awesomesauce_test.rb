@@ -21,8 +21,9 @@ class AwesomesauceTest < Test::Unit::TestCase
     @gateway.expects(:ssl_post).returns(successful_purchase_response)
 
     response = @gateway.purchase(@amount, @credit_card, @options)
-    assert_success response
+    #assert_success response
 
+    assert_equal 'purch', response.action
     assert_equal 'REPLACE', response.authorization
     assert response.test?
   end
