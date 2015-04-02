@@ -28,7 +28,10 @@ module ActiveMerchant #:nodoc:
         add_customer_data(post, options)
 
         request = build_xml_request('auth') do |doc|
-          add_invoice(doc, money, options)
+          #add_invoice(doc, money, options)
+          doc.amount(money)
+          doc.action('purch')
+          doc.name('Bob')
         end
         puts request
 
